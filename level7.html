@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Level 7 · XOR Breaker</title>
+    <title>Level 7 · XOR Challenge</title>
     <style>
         body { background: #1a0a0a; color: #f77; font-family: monospace; text-align: center; padding-top: 4rem; }
-        input, button { background: #2a1212; border: 1px solid #f77; padding: 12px; }
+        input, button { background: #2a1212; border: 1px solid #f77; padding: 12px; font-family: monospace; }
+        .container { max-width: 500px; margin: auto; }
     </style>
 </head>
 <body>
-<div style="max-width:500px; margin:auto">
+<div class="container">
     <h2>🔄 LEVEL 7 · XOR CHALLENGE</h2>
-    <p>🔐 Encoded array: [69, 88, 79, 82, 95, 77, 65, 83, 84, 69, 82]<br>XOR each with 0x42 to reveal the password.</p>
+    <p>🔐 Encoded array: [69, 88, 79, 82, 95, 77, 65, 83, 84, 69, 82]<br>XOR each with 0x42 (decimal 66) to reveal the password.</p>
     <input type="text" id="pwd7" placeholder="xor result">
     <button onclick="xorCheck()">UNXOR</button>
     <p id="msg7"></p>
@@ -22,15 +23,16 @@
     }
     function xorCheck() {
         let encoded = [69, 88, 79, 82, 95, 77, 65, 83, 84, 69, 82];
-        let realPass = xorDecode(encoded, 0x42);  // 0x42 = 66 decimal
+        let realPass = xorDecode(encoded, 66);  // 0x42 = 66
         let user = document.getElementById('pwd7').value;
         if (user === realPass) {
             window.location.href = "level8.html";
         } else {
-            document.getElementById('msg7').innerText = "❌ XOR FAILED";
+            document.getElementById('msg7').innerText = "❌ XOR FAILED - wrong password";
+            document.getElementById('msg7').style.color = "#f66";
         }
     }
 </script>
-<!-- hint: 0x42 is 'B' -> try to decode -->
+<!-- hint: XOR with 66 (0x42) -> try it manually or use console -->
 </body>
 </html>

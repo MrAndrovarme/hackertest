@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Level 8 · Base64 Secret</title>
+    <style>
+        body { background: #111122; color: #aaf; font-family: monospace; text-align: center; padding-top: 4rem; }
+        input, button { background: #1e1e3a; border: 1px solid #aaf; padding: 12px; }
+    </style>
+</head>
+<body>
+<div style="max-width:500px; margin:auto">
+    <h2>📦 LEVEL 8 · BASE64 DECODE</h2>
+    <p>📜 Hidden string: <strong>c3RlYWx0aF9iYXNlNjRfazN5</strong><br>Decode from Base64.</p>
+    <input type="text" id="pwd8" placeholder="base64 decoded">
+    <button onclick="b64Check()">DECODE</button>
+    <p id="msg8"></p>
+</div>
+<script>
+    function b64Check() {
+        let encoded = "c3RlYWx0aF9iYXNlNjRfazN5";
+        let realPass = atob(encoded);  // "stealth_base64_k3y"
+        let user = document.getElementById('pwd8').value;
+        if (user === realPass) {
+            window.location.href = "level9.html";
+        } else {
+            document.getElementById('msg8').innerText = "❌ WRONG DECODING";
+        }
+    }
+</script>
+</body>
+</html>

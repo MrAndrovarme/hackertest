@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 4 - Encoded Secrets</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #0f3460 0%, #533483 100%);
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 40px;
+            max-width: 600px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .level-badge {
+            background: #00ff00;
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 15px;
+            background: #000;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #00ff00;
+            border: none;
+            color: #000;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #00cc00;
+            box-shadow: 0 0 15px #00ff00;
+        }
+        .hint {
+            background: rgba(255, 255, 0, 0.1);
+            border-left: 3px solid #ffff00;
+            padding: 10px;
+            margin-top: 20px;
+            color: #ffff00;
+        }
+        .error {
+            color: #ff0000;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="level-badge">LEVEL 4</div>
+        <h1>🔐 ENCODED SECRETS</h1>
+        <p>Excellent progress! You're halfway through the challenge.</p>
+        <p>This time, the password is hidden but encoded. You'll need to decode it first!</p>
+        
+        <input type="text" id="password" placeholder="Enter password..." autocomplete="off">
+        <button onclick="checkPassword()">SUBMIT</button>
+        <div class="error" id="error">ACCESS DENIED!</div>
+        
+        <div class="hint">
+            💡 HINT: Look for something that looks like gibberish. It might be Base64 encoded...
+        </div>
+    </div>
+
+    <script>
+        // Encoded password: ZGVjb2Rlcl9wcm8=
+        const encodedPass = 'ZGVjb2Rlcl9wcm8=';
+        
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error');
+            const correctPassword = atob(encodedPass);
+            
+            if (password === correctPassword) {
+                window.location.href = 'level5.html';
+            } else {
+                errorDiv.style.display = 'block';
+                setTimeout(() => {
+                    errorDiv.style.display = 'none';
+                }, 2000);
+            }
+        }
+        
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>

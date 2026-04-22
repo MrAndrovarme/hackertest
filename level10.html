@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Level 9 · Global Hunt</title>
+    <style>
+        body { background: #0a2a1a; color: #8f8; font-family: monospace; text-align: center; padding-top: 4rem; }
+        input, button { background: #1a3a2a; border: 1px solid #8f8; padding: 12px; }
+    </style>
+</head>
+<body>
+<div style="max-width:500px; margin:auto">
+    <h2>🌐 LEVEL 9 · GLOBAL OBJECT</h2>
+    <p>🕸️ The password is stored in <strong>window._level9_token</strong><br>Inspect in console.</p>
+    <input type="text" id="pwd9" placeholder="global value">
+    <button onclick="globCheck()">EXTRACT</button>
+    <p id="msg9"></p>
+</div>
+<script>
+    window._level9_token = "global_ninja_77";
+
+    function globCheck() {
+        let user = document.getElementById('pwd9').value;
+        if (user === window._level9_token) {
+            window.location.href = "level10.html";
+        } else {
+            document.getElementById('msg9').innerText = "❌ GLOBAL MISMATCH";
+        }
+    }
+    console.log("🌍 window._level9_token is the key");
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Level 6 · Hex Decode</title>
+    <style>
+        body { background: #001010; color: #6ff; font-family: monospace; text-align: center; padding-top: 4rem; }
+        input, button { background: #022; border: 1px solid #6ff; padding: 12px; }
+    </style>
+</head>
+<body>
+<div style="max-width:500px; margin:auto">
+    <h2>🔢 LEVEL 6 · HEX PUZZLE</h2>
+    <p>🧬 The password is the hexadecimal representation of the string <strong>"hex_hacker"</strong></p>
+    <input type="text" id="pwd6" placeholder="hex decoded">
+    <button onclick="checkHex()">DECODE HEX</button>
+    <p id="msg6"></p>
+</div>
+<script>
+    function strToHex(str) {
+        return Array.from(str).map(c => c.charCodeAt(0).toString(16)).join('');
+    }
+    function checkHex() {
+        let userVal = document.getElementById('pwd6').value;
+        let target = strToHex("hex_hacker");  // 6865785f6861636b6572
+        if (userVal === target) {
+            window.location.href = "level7.html";
+        } else {
+            document.getElementById('msg6').innerText = "❌ HEX MISMATCH";
+        }
+    }
+</script>
+<!-- hint: "hex_hacker" in hex = 6865785f6861636b6572 -->
+</body>
+</html>

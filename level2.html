@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Level 1 · Source Dive</title>
+    <style>
+        body { background: #0a0f1a; color: #cfc; font-family: monospace; text-align: center; padding-top: 4rem; }
+        input, button { background: #1e2a2a; border: 1px solid #0f0; padding: 12px; margin: 8px; color: #0f0; }
+        .container { max-width: 500px; margin: auto; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>🔓 LEVEL 1 · INSPECT ME</h2>
+    <p>👁️ The password is hidden in an HTML comment.</p>
+    <p>(Right click → View Page Source)</p>
+    <input type="text" id="pwd" placeholder="password">
+    <button onclick="check()">UNLOCK</button>
+    <p id="msg"></p>
+</div>
+<!-- ⚡ lvl1_password: ghost_in_the_shell ⚡ -->
+<script>
+    function check() {
+        let val = document.getElementById('pwd').value;
+        if (val === "ghost_in_the_shell") {
+            window.location.href = "level2.html";
+        } else {
+            document.getElementById('msg').innerText = "❌ ACCESS DENIED";
+        }
+    }
+</script>
+</body>
+</html>

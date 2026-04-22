@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Level 5 · Function Call</title>
+    <style>
+        body { background: #1a1c1a; color: #fa0; font-family: monospace; text-align: center; padding-top: 4rem; }
+        input, button { background: #2a241a; border: 1px solid #fa0; padding: 12px; }
+    </style>
+</head>
+<body>
+<div style="max-width:500px; margin:auto">
+    <h2>⚙️ LEVEL 5 · HIDDEN FUNCTION</h2>
+    <p>📡 There's a function in the global scope: <strong>getLevelFiveKey()</strong><br>Call it from console.</p>
+    <input type="text" id="pwd5" placeholder="result of function">
+    <button onclick="test5()">EXECUTE</button>
+    <p id="msg5"></p>
+</div>
+<script>
+    // The password is returned by this function
+    window.getLevelFiveKey = function() {
+        return "closure_crack_99";
+    };
+
+    function test5() {
+        let userInput = document.getElementById('pwd5').value;
+        let correct = window.getLevelFiveKey();
+        if (userInput === correct) {
+            window.location.href = "level6.html";
+        } else {
+            document.getElementById('msg5').innerText = "⛔ FUNCTION MISMATCH";
+        }
+    }
+    console.log("📢 try window.getLevelFiveKey()");
+</script>
+</body>
+</html>

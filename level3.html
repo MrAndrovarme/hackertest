@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Level 2 · Console Whisper</title>
+    <style>
+        body { background: #010511; color: #bdf; font-family: monospace; text-align: center; padding-top: 4rem; }
+        input, button { background: #1a1f2e; border: 1px solid #5af; padding: 12px; color: #5af; }
+    </style>
+</head>
+<body>
+<div class="container" style="max-width:500px; margin:auto">
+    <h2>🌀 LEVEL 2 · CONSOLE WHISPER</h2>
+    <p>🐚 Open DevTools (F12) → Console.<br>Find the hidden variable.</p>
+    <input type="text" id="pwd2" placeholder="password">
+    <button onclick="verify()">→ BREACH →</button>
+    <p id="msg2"></p>
+</div>
+<script>
+    // 👾 secret for level 2 (view source or console)
+    let _hiddenKey = "console_master_77";
+
+    function verify() {
+        let input = document.getElementById('pwd2').value;
+        if (input === _hiddenKey) {
+            window.location.href = "level3.html";
+        } else {
+            document.getElementById('msg2').innerText = "⛔ WRONG CODE";
+        }
+    }
+    console.log("%c[!] HINT: _hiddenKey holds the password", "color:#5af");
+</script>
+</body>
+</html>

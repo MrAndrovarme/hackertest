@@ -2,32 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Level 9 · Global Hunt</title>
+    <title>Level 10 · Final Breach</title>
     <style>
-        body { background: #0a2a1a; color: #8f8; font-family: monospace; text-align: center; padding-top: 4rem; }
-        input, button { background: #1a3a2a; border: 1px solid #8f8; padding: 12px; }
+        body { background: #000000; color: gold; font-family: monospace; text-align: center; padding-top: 4rem; }
+        input, button { background: #221c00; border: 1px solid gold; padding: 12px; }
+        .glow { text-shadow: 0 0 5px gold; }
     </style>
 </head>
 <body>
 <div style="max-width:500px; margin:auto">
-    <h2>🌐 LEVEL 9 · GLOBAL OBJECT</h2>
-    <p>🕸️ The password is stored in <strong>window._level9_token</strong><br>Inspect in console.</p>
-    <input type="text" id="pwd9" placeholder="global value">
-    <button onclick="globCheck()">EXTRACT</button>
-    <p id="msg9"></p>
+    <h2 class="glow">🏆 FINAL LEVEL · ROT13 RIDDLE 🏆</h2>
+    <p>⚡ The password is ROT13 of <strong>"svany_chmmyr_2025"</strong> and then reverse it.<br>Yes — double layer.</p>
+    <input type="text" id="pwd10" placeholder="final password">
+    <button onclick="finalCheck()">ASCEND</button>
+    <p id="msg10"></p>
 </div>
 <script>
-    window._level9_token = "global_ninja_77";
-
-    function globCheck() {
-        let user = document.getElementById('pwd9').value;
-        if (user === window._level9_token) {
-            window.location.href = "level10.html";
+    function rot13(str) {
+        return str.replace(/[a-zA-Z]/g, c => {
+            let base = c <= 'Z' ? 65 : 97;
+            return String.fromCharCode((c.charCodeAt(0) - base + 13) % 26 + base);
+        });
+    }
+    function finalCheck() {
+        let step1 = rot13("svany_chmmyr_2025");   // "final_puzzle_2025"
+        let realPassword = step1.split('').reverse().join('');  // reverse it
+        let user = document.getElementById('pwd10').value;
+        if (user === realPassword) {
+            document.getElementById('msg10').innerHTML = "🎉✨ CONGRATULATIONS, HACKER! ✨🎉<br>You completed all 10 levels.";
         } else {
-            document.getElementById('msg9').innerText = "❌ GLOBAL MISMATCH";
+            document.getElementById('msg10').innerText = "❌ FAILED. ROT13 + reverse.";
         }
     }
-    console.log("🌍 window._level9_token is the key");
 </script>
+<!-- 💀 FINAL TIP: rot13('svany_chmmyr_2025') then reverse the string 💀 -->
 </body>
 </html>

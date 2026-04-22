@@ -2,32 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Level 1 · Source Dive</title>
+    <title>Level 2 · Console Whisper</title>
     <style>
-        body { background: #0a0f1a; color: #cfc; font-family: monospace; text-align: center; padding-top: 4rem; }
-        input, button { background: #1e2a2a; border: 1px solid #0f0; padding: 12px; margin: 8px; color: #0f0; }
-        .container { max-width: 500px; margin: auto; }
+        body { background: #010511; color: #bdf; font-family: monospace; text-align: center; padding-top: 4rem; }
+        input, button { background: #1a1f2e; border: 1px solid #5af; padding: 12px; color: #5af; }
     </style>
 </head>
 <body>
-<div class="container">
-    <h2>🔓 LEVEL 1 · INSPECT ME</h2>
-    <p>👁️ The password is hidden in an HTML comment.</p>
-    <p>(Right click → View Page Source)</p>
-    <input type="text" id="pwd" placeholder="password">
-    <button onclick="check()">UNLOCK</button>
-    <p id="msg"></p>
+<div class="container" style="max-width:500px; margin:auto">
+    <h2>🌀 LEVEL 2 · CONSOLE WHISPER</h2>
+    <p>🐚 Open DevTools (F12) → Console.<br>Find the hidden variable.</p>
+    <input type="text" id="pwd2" placeholder="password">
+    <button onclick="verify()">→ BREACH →</button>
+    <p id="msg2"></p>
 </div>
-<!-- ⚡ lvl1_password: ghost_in_the_shell ⚡ -->
 <script>
-    function check() {
-        let val = document.getElementById('pwd').value;
-        if (val === "ghost_in_the_shell") {
-            window.location.href = "level2.html";
+    // 👾 secret for level 2 (view source or console)
+    let _hiddenKey = "console_master_77";
+
+    function verify() {
+        let input = document.getElementById('pwd2').value;
+        if (input === _hiddenKey) {
+            window.location.href = "level3.html";
         } else {
-            document.getElementById('msg').innerText = "❌ ACCESS DENIED";
+            document.getElementById('msg2').innerText = "⛔ WRONG CODE";
         }
     }
+    console.log("%c[!] HINT: _hiddenKey holds the password", "color:#5af");
 </script>
 </body>
 </html>

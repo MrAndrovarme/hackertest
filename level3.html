@@ -2,33 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Level 2 · Console Whisper</title>
+    <title>Level 3 · Reverse Engineering</title>
     <style>
-        body { background: #010511; color: #bdf; font-family: monospace; text-align: center; padding-top: 4rem; }
-        input, button { background: #1a1f2e; border: 1px solid #5af; padding: 12px; color: #5af; }
+        body { background: #0a1008; color: #9c9; font-family: monospace; text-align: center; padding-top: 4rem; }
+        input, button { background: #1e2a1a; border: 1px solid #9c9; padding: 12px; }
     </style>
 </head>
 <body>
-<div class="container" style="max-width:500px; margin:auto">
-    <h2>🌀 LEVEL 2 · CONSOLE WHISPER</h2>
-    <p>🐚 Open DevTools (F12) → Console.<br>Find the hidden variable.</p>
-    <input type="text" id="pwd2" placeholder="password">
-    <button onclick="verify()">→ BREACH →</button>
-    <p id="msg2"></p>
+<div style="max-width:500px; margin:auto">
+    <h2>🔁 LEVEL 3 · REVERSE CIPHER</h2>
+    <p>📜 Source contains an encoded string: <strong>"3v3r_esrever"</strong><br>Decode it.</p>
+    <input type="text" id="pwd3" placeholder="reverse it">
+    <button onclick="check3()">DECODE</button>
+    <p id="msg3"></p>
 </div>
+<!-- hint: the real key is the reverse of "3v3r_esrever" -->
 <script>
-    // 👾 secret for level 2 (view source or console)
-    let _hiddenKey = "console_master_77";
-
-    function verify() {
-        let input = document.getElementById('pwd2').value;
-        if (input === _hiddenKey) {
-            window.location.href = "level3.html";
+    function check3() {
+        let user = document.getElementById('pwd3').value;
+        let encoded = "3v3r_esrever";
+        let realPass = encoded.split('').reverse().join(''); // reverse engineering
+        if (user === realPass) {
+            window.location.href = "level4.html";
         } else {
-            document.getElementById('msg2').innerText = "⛔ WRONG CODE";
+            document.getElementById('msg3').innerText = "❌ NO MATCH";
         }
     }
-    console.log("%c[!] HINT: _hiddenKey holds the password", "color:#5af");
 </script>
 </body>
 </html>
